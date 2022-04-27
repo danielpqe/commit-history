@@ -32,10 +32,10 @@ export class CommitApplication {
       .catch((error) => console.error(error));
   }
 
-  findAll(commit: CommitModel) {
-    this.repositoryCommit
-      .update(commit)
-      .then((user) => console.log(user))
-      .catch((error) => console.error(error));
+  async findAll() {
+    return await this.repositoryCommit.findAll();
+    // this.repositoryCommit.findAll().then((user) => {
+    //   return user;
+    // });
   }
 }

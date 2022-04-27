@@ -1,22 +1,20 @@
-import express, { Application } from "express";
-import routerCommits from "./commits/interfaces/commits.route";
+import routerCommits from "./commits/interfaces/http/commits.route";
+import ServerBootstrap from "./bootstrap/server.bootstrap";
+
+const serverBootstrap = new ServerBootstrap();
+//serverBootstrap.initialize();
 
 class App {
-  expressApp: Application;
   constructor() {
-    this.expressApp = express();
     this.listen();
     this.mountRoutes();
   }
   listen(): void {
-    this.expressApp.listen(3000, () => console.log("listening"));
+    serverBootstrap.initialize();
   }
   mountRoutes(): void {
-    this.expressApp.use("/commits", routerCommits);
+    serverBootstrap.expressApp.use("/commits", routerCommits);
   }
 }
 
-const application = new App();
-const app = application.expressApp;
-
-export default app;
+export default new App();

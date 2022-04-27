@@ -12,6 +12,9 @@ export abstract class BaseInfraestructure<T> {
     throw new Error("Method not implemented.");
   }
   findAll(): Promise<T[]> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve([
+      { id: "1", message: "Commit message 1" },
+      { id: "2", message: "Commit message 2" },
+    ] as any[]);
   }
 }
