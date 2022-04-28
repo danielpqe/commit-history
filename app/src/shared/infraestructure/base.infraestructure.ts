@@ -1,3 +1,9 @@
+import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+const { BASE_URL, OWNER, REPO } = process.env;
+
 export abstract class BaseInfraestructure<T> {
   insert(commit: T): Promise<T> {
     throw new Error("Method not implemented.");
@@ -11,10 +17,10 @@ export abstract class BaseInfraestructure<T> {
   findById(id: string): Promise<T> {
     throw new Error("Method not implemented.");
   }
-  findAll(): Promise<T[]> {
-    return Promise.resolve([
-      { id: "1", message: "Commit message 1" },
-      { id: "2", message: "Commit message 2" },
-    ] as any[]);
+  async findAll() {
+    const URL = BASE_URL + "repos/" + OWNER + "/" + REPO + "/commits";
+    const { data } = await axios.get<T>(URL);
+
+    return data;
   }
 }
