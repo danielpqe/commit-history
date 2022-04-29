@@ -3,7 +3,7 @@ import express, { Application } from "express";
 import dotenv from "dotenv";
 
 dotenv.config();
-const { PORT } = process.env;
+const { PORT } = process.env || 8000;
 
 export default class ServerBootstrap implements IBootstrap {
   expressApp: Application;

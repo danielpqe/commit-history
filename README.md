@@ -55,12 +55,11 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 ## Install
 
     $ git clone https://github.com/danielpqe/commit-history.git
-    $ cd commit-history
-    $ cd app
+    $ cd commit-history/app
     $ npm install
-    $ npm install-client
+    $ npm run install-client
 
 ## Running the project
 
-    make sure you are in the app directory
+    make sure you are in the app directory (commit-history/app)
     $ npm run start
