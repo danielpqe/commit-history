@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon src/app.ts",
+    "server": "ts-node src/app.ts",
     "start": "concurrently \"npm run server\" \"cd ../client && npm run client\"",
     "install-client": "concurrently \"cd ../client && npm install\""
   },
