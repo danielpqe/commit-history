@@ -6,21 +6,26 @@ import axios from "axios";
 const CommitState = (props) => {
   const initialState = {
     commits: [],
-    selectedCommit: null,
+    selectedCommit: [],
   };
 
   const [state, dispatch] = useReducer(CommitReducer, initialState);
 
   const getCommits = async () => {
     const res = await axios.get("http://localhost:8000/commits");
-    console.log("API", res);
     dispatch({
       type: "GET_COMMITS",
       payload: res.data,
     });
   };
 
-  const getCommitDetails = () => {};
+  const getCommitDetails = async (sha) => {
+    const res = await axios.get("http://localhost:8000/commits/" + sha);
+    dispatch({
+      type: "GET_COMMIT_DETAILS",
+      payload: res.data,
+    });
+  };
 
   return (
     <CommitContext.Provider

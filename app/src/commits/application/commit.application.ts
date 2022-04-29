@@ -25,11 +25,8 @@ export class CommitApplication {
       .catch((error) => console.error(error));
   }
 
-  findById(commit: CommitModel) {
-    this.repositoryCommit
-      .update(commit)
-      .then((user) => console.log(user))
-      .catch((error) => console.error(error));
+  async findById(id: string) {
+    return await this.repositoryCommit.findById(id);
   }
 
   async findAll() {

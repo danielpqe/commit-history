@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import LeftMenu from "../components/LeftMenu";
 import Header from "../components/Header";
 import Title from "../components/Title";
 import Commits from "../components/Commits";
 import Details from "../components/Details";
+import CommitContext from "../context/commits/CommitContext";
 
 const Home = () => {
-  const [user, setUser] = useState([]);
+  const { commits } = useContext(CommitContext);
+
   return (
     <React.Fragment>
       <Header />
@@ -18,7 +20,7 @@ const Home = () => {
 
             <div className="columns">
               <Commits />
-              <Details />
+              {commits.selectedCommit.commit && <Details />}
             </div>
           </div>
         </div>

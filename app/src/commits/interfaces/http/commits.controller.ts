@@ -9,4 +9,11 @@ export class CommitsController {
 
     res.json(commits);
   }
+
+  async listById(req: Request, res: Response) {
+    const { id } = req.params;
+    const commit = await this.application.findById(id);
+
+    res.json(commit);
+  }
 }

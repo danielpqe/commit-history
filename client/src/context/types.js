@@ -1,1 +1,2 @@
 export const GET_COMMITS = "GET_COMMITS";
+export const GET_COMMIT_DETAILS = "GET_COMMIT_DETAILS";
